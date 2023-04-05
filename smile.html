@@ -1,0 +1,69 @@
+<body>
+<p><strong>Mot: </strong><span></span></p>
+<div>
+    <p>--- <span class="reponse">c</span> -|- <span class="reponse">ç</span> ---
+        <br><img src='neutre.png'></p>
+    <span id="suivant">Mot suivant</span>
+</div>
+
+
+
+
+<script>
+    var v = 0
+    var vraimots = ["c", "ç", "c", "ç", "ç", "ç", "c", "c", "ç", "c", "c", ]
+    var mots = ["exer?e", "fa?on", "fa?ial", "gla?on", "re?u", "ma?on",
+        "?erise", "pou?e", "gar?on", "for?e", "a?ide"
+    ]
+    var bouttons = document.getElementsByTagName('span')[0]
+    console.log(bouttons)
+    var i = 0
+    bouttons.textContent = mots[i]
+    var rep = document.getElementsByClassName("reponse")
+    console.log(rep[0].textContent)
+    rep[0].addEventListener('click', bout);
+    rep[1].addEventListener('click', bout);
+
+    /////////////////////////////////
+    var imge = document.getElementsByTagName("img")
+    console.log(imge[0].src)
+    test = imge[0].src.lastIndexOf("/")
+    console.log(test)
+    var lesrc = imge[0].src.substring(0, test + 1)
+    console.log(lesrc)
+    ///////////////////////////////////////
+    function bout() {
+        rep[0].removeEventListener('click', bout);
+        rep[1].removeEventListener('click', bout);
+        if ((this.textContent) == vraimots[i]) {
+            imge[0].src = lesrc + "Yes.png"
+                        this.style.backgroundColor = "green" ;
+
+            console.log("vrai")
+            v = v + 1
+        } else {
+            imge[0].src = lesrc + "No.png"
+            this.style.backgroundColor = "red" ;
+            console.log("faux")
+        }
+        sv.addEventListener("click", suiv)
+    }
+    var sv = document.getElementById("suivant")
+    sv.style.backgroundColor = "pink"
+
+    function suiv() {
+
+        i = i + 1
+        if (i <= 10) {
+            bouttons.textContent = mots[i]
+            rep[0].addEventListener('click', bout);
+            rep[1].addEventListener('click', bout);
+            sv.removeEventListener("click", suiv)
+            imge[0].src = lesrc + "Neutre.png"
+            rep[0].style.backgroundColor = ""
+            rep[1].style.backgroundColor = ""
+        } else alert("votre score est " + v + "/11")
+
+    }
+</script>
+</body>

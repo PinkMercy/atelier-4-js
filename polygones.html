@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Les polygones</title>
+    <meta charset="utf-8">
+    <style>
+        div {
+            text-align: center
+        }
+
+        table {
+            width: 50%;
+            margin: auto
+        }
+
+        td {
+            width: 75%;
+            border: 1px solid
+        }
+
+        li {
+            margin-top: 5px;
+            text-align: left
+        }
+
+        span {
+            visibility: hidden
+        }
+
+        .visible {
+            visibility: visible;
+            font-weight: bold
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Reconnaissance des polygones réguliers</h2>
+        <h1></h1>
+        <span id="brv">Bravo</span>
+        <table>
+            <tr>
+                <th>
+                    <ul>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>10</li>
+                        <li>11</li>
+                        <li>12</li>
+                    </ul>
+                </th>
+                <td><img src=""></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var m = prompt("donner votre nom", "foulen")
+
+        lista = ["Triangle", "Carré", "Pentagone", "Hexagone", "Heptagone", "Octogone", "Ennéagone", "Décagone",
+            "Hendécagone", "Dodécagone"
+        ]
+        var bouttons = document.getElementsByTagName('li')
+        for (j = 0; j < 10; j++) {
+            bouttons[j].addEventListener('click', typee);
+        }
+
+        var i = Math.floor(Math.random() * 10)
+        console.log(i)
+        document.getElementsByTagName("h1")[0].textContent = lista[i]
+        //console.log(document.getElementsByTagName("h1")[0].textContent)
+
+        function typee() {
+            if (this.textContent == i + 3) {
+                console.log("vrai")
+                vrai = document.getElementById("brv").style.visibility = "visible"
+
+                document.getElementById("brv").textContent = document.getElementById("brv").textContent + " " + m
+                //console.log(ans)
+                document.getElementsByTagName("img")[0].src = "polygones/" + lista[i] + ".png"
+                //console.log(this.textContent)
+                this.style.fontSize = "2em"
+            } else {
+                console.log("false")
+                alert("erreur")
+            }
+
+            for (j = 0; j < 10; j++) {
+                bouttons[j].removeEventListener('click', typee);
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,97 @@
+<body>
+  <p></p>
+  <ul id="L1"></ul>
+  <script>
+    test = new Date();
+    document.getElementsByTagName("p")[0].textContent =
+      "le test a commence a  " +
+      test.getHours() +
+      "h:" +
+      test.getMinutes() +
+      "m:" +
+      test.getSeconds();
+
+    //document.write("<h3>En quelle année la Tunisie est devenue ",rand(),"</h3>")
+
+    lista = ["1956", "1881", "1590", "647", "1957"];
+    aa = document.getElementById("L1");
+
+    for (i = 0; i < lista.length; i++) {
+      li = document.createElement("li");
+      li.textContent = lista[i];
+      console.log(li.textContent);
+      aa.appendChild(li);
+      li.addEventListener("click", clik);
+    }
+    // cntrl :
+
+    ////        let index = Array.prototype.indexOf.call(li, li);
+    //console.log(index);
+    // console.log(this.li)
+
+    //////////////////////////////////////////////////////////////////
+    var quest = [
+      "un pays indépendant?",
+      "un protectorat français?",
+      "une province de l'empire ottoman?",
+      "une province de l'empire arabe?",
+      "une république?",
+    ];
+
+    function rand() {
+      ani = Math.floor(Math.random() * 5);
+      window.removeEventListener("load", rand);
+
+      return [quest[ani], ani];
+    }
+
+    window.addEventListener("load", rand);
+    ///////////////////////////////////////////////////////////////////////
+
+    // Get a reference to the parent element
+    let parent = document.getElementsByTagName("body")[0];
+
+    // Create a new <h3> element
+    let newParagraph = document.createElement("h3");
+
+    // Set the text content of the <h3> element
+    rahma = rand();
+    newParagraph.textContent =
+      "En quelle année la Tunisie est devenue " + rahma[0];
+
+    // Get a reference to the before element
+    be = document.getElementsByTagName("ul")[0];
+
+    // Append the <h3> element before the be element
+    parent.insertBefore(newParagraph, be);
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    function waa() {
+      let now = new Date();
+      let time = now.getSeconds();
+      //  console.log(time);
+      return time;
+    }
+
+    let button = document.getElementsByTagName("li");
+    for (k = 0; k < 4; k++) {
+      button[k].addEventListener("click", waa);
+    }
+
+    function clik() {
+      //     console.log(this)
+      let index = Array.prototype.indexOf.call(lista, this.textContent);
+      //     console.log(index);
+      console.log(waa());
+      console.log(test.getSeconds() + 9);
+      if (index == rahma[1] && test.getSeconds() + 9 > waa()) {
+        alert("Bravo, ça vous a pris 9 seconde(s) pour le deviner");
+      } else if (index == rahma[1] && test.getSeconds() + 9 <= waa()) {
+        alert("correct");
+      } else {
+        alert("erreru");
+      }
+    }
+  </script>
+</body>

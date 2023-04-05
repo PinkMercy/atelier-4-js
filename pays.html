@@ -1,0 +1,114 @@
+<head>
+    <title>Pays</title>
+    <meta charset="utf-8">
+    <style>
+        ul {
+            float: left;
+            width: 30%;
+            font-size: 1.5em
+        }
+
+        table {
+            clear: left
+        }
+    </style>
+</head>
+
+<body>
+    <p></p>
+    <ul>
+        <li>France</li>
+        <li>Allemagne</li>
+        <li>Espagne</li>
+        <li>Pologne</li>
+        <li>Hongrie</li>
+        <li>Roumanie</li>
+    </ul>
+    <figure></figure>
+    <table>
+        <tr>
+            <td><img src='cartes/Ho.png'></td>
+            <td><img src='cartes/Pol.png'></td>
+            <td><img src='cartes/Al.png'></td>
+        </tr>
+        <tr>
+            <td><img src='cartes/Fr.png'></td>
+            <td><img src='cartes/Esp.png'></td>
+            <td><img src='cartes/Ro.png'> </td>
+        </tr>
+    </table>
+    <script>
+        var carta = ["Hongrie", "Pologne", "Allemagne", "France", "Espagne", "Roumanie"]
+        var payys = document.querySelectorAll('li')
+        for (j = 0; j < 6; j++) {
+            payys[j].addEventListener('click', pay);
+        }
+
+        function pay() {
+            var test = document.querySelectorAll('ul li')
+            for (i = 0; i < test.length; i++) {
+                test[i].style.border = "initial"
+            }
+
+            document.getElementsByTagName("figure")[0].textContent = ""
+            // var p = this.textContent
+            console.log(this.textContent)
+            var img = document.createElement('img')
+            img.src = "cartes/" + this.textContent + ".png"
+            figure = document.getElementsByTagName("figure")[0]
+            figure.appendChild(img)
+
+
+            if (document.getElementsByTagName("img").src = "cartes/" + this.textContent + ".png")
+                this.style.border = "1px solid black"
+
+        }
+
+        //////////////////////////////////////////////////////////////////
+
+
+        var bouttons = document.getElementsByTagName("img")
+
+        //////////   
+
+
+
+        for (i = 0; i < 6; i++) {
+            bouttons[i].addEventListener('mouseover', flag);
+        }
+
+
+        function flag() {
+            test = this.src.lastIndexOf("/")
+            console.log(test)
+            test2 = this.src.substring(0, test + 1)
+            console.log(test2)
+            lesrc = this.src.substring(test + 1)
+            console.log(lesrc)
+            var p = test2 + lesrc.substring(0, lesrc.length - 4) + ".gif"
+
+
+            this.src = p;
+            console.log(p)
+        }
+        ///////////////////////   
+        for (i = 0; i < 6; i++) {
+            bouttons[i].addEventListener('mouseout', flag1);
+        }
+
+        function flag1() {
+
+
+            test = this.src.lastIndexOf("/")
+            console.log(test)
+            test2 = this.src.substring(0, test + 1)
+            console.log(test2)
+            lesrc = this.src.substring(test + 1)
+            console.log(lesrc)
+            var p = test2 + lesrc.substring(0, lesrc.length - 4) + ".png"
+            console.log(p)
+            this.src = p;
+        }
+    </script>
+
+</body>
